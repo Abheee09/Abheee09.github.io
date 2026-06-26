@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhijeet Patil | Data & Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0D0E10;
+    --surface: #141618;
+    --surface2: #1B1E22;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.12);
+    --text-primary: #F0EEE9;
+    --text-secondary: #8A8880;
+    --text-muted: #555350;
+    --accent: #E8673A;
+    --accent-dim: rgba(232,103,58,0.12);
+    --accent-dim2: rgba(232,103,58,0.06);
+    --teal: #1FA676;
+    --teal-dim: rgba(31,166,118,0.12);
+    --blue: #3B7DD8;
+    --blue-dim: rgba(59,125,216,0.12);
+    --purple: #7B6FD4;
+    --purple-dim: rgba(123,111,212,0.12);
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(13,14,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 8rem 4rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-description {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border: 0.5px solid var(--border-strong);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+  /* Hero right: stat cards */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .stat-card.accent-border { border-color: rgba(232,103,58,0.3); }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-number span { color: var(--accent); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .stat-card.wide { grid-column: span 2; }
+  .stat-wide-inner {
+    display: flex; gap: 2rem; align-items: center;
+  }
+  .stat-wide-inner .divider {
+    width: 0.5px; height: 48px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION SHELL ── */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border);
+  }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    min-width: 80px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.15;
+  }
+
+  /* ── BIO ── */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .bio-text p {
+    color: var(--text-secondary);
+    font-size: 15.5px;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .bio-text p strong { color: var(--text-primary); font-weight: 500; }
+  .bio-chips {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+  .chip {
+    font-size: 12px;
+    padding: 0.3rem 0.75rem;
+    border: 0.5px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+  .chip.accent { border-color: rgba(232,103,58,0.35); color: var(--accent); background: var(--accent-dim2); }
+
+  .bio-aside {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .aside-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+  .aside-card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .aside-card-value {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  .aside-card-value small { color: var(--text-secondary); font-size: 12px; display: block; margin-top: 2px; }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .exp-item:first-child { border-top: 0.5px solid var(--border); }
+  .exp-meta {}
+  .exp-company {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .exp-period {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+  .exp-role {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-top: 0.35rem;
+  }
+  .exp-body {}
+  .exp-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .exp-bullets li {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    font-size: 13px;
+  }
+  .exp-bullets li strong { color: var(--text-primary); font-weight: 500; }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+  .exp-tag {
+    font-size: 11px;
+    padding: 0.2rem 0.6rem;
+    background: var(--surface2);
+    border-radius: 3px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .skill-group {
+    background: var(--bg);
+    padding: 2rem 1.75rem;
+  }
+  .skill-group-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+  }
+  .skill-group-title.orange { color: var(--accent); }
+  .skill-group-title.teal { color: var(--teal); }
+  .skill-group-title.blue { color: var(--blue); }
+  .skill-group-title.purple { color: var(--purple); }
+  .skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+  .skill-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .skill-dot.orange { background: var(--accent); }
+  .skill-dot.teal { background: var(--teal); }
+  .skill-dot.blue { background: var(--blue); }
+  .skill-dot.purple { background: var(--purple); }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .project-card {
+    background: var(--bg);
+    padding: 2rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .project-card:hover { background: var(--surface); }
+  .project-card a.project-link {
+    position: absolute; inset: 0;
+  }
+  .project-number {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+  .project-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .project-tag {
+    font-size: 11px;
+    padding: 0.2rem 0.55rem;
+    background: var(--surface2);
+    border-radius: 3px;
+    color: var(--text-secondary);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+  .edu-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+  .edu-degree {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .edu-school {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  .edu-detail { font-size: 12px; color: var(--text-muted); }
+  .edu-badge {
+    font-size: 11px;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .edu-badge.active {
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 0.5px solid rgba(31,166,118,0.3);
+  }
+  .edu-badge.done {
+    background: var(--surface2);
+    color: var(--text-muted);
+    border: 0.5px solid var(--border);
+  }
+
+  /* ── CERTS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+  }
+  .cert-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+  .cert-issuer { font-size: 12px; color: var(--text-muted); }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .contact-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--text-primary); }
+  .contact-link-icon {
+    width: 32px; height: 32px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .contact-aside {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .contact-aside-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+  }
+  .contact-aside-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .contact-aside-item:last-child { border-bottom: none; }
+  .contact-aside-item-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-aside-item-value { font-size: 13.5px; color: var(--text-secondary); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  .footer-copy { font-size: 12px; color: var(--text-muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .bio-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Abhijeet Patil</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Senior Analytics &amp; Data Engineer</div>
+    <h1>Turning data into<br><em>decisions</em> that move<br>businesses forward.</h1>
+    <p class="hero-description">
+      4+ years delivering analytics, BI, and data engineering solutions across FMCG and Healthcare at BrandScapes Worldwide — currently transitioning into Cloud Data Engineering with AWS.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card accent-border">
+      <div class="stat-number">4<span>+</span></div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">35<span>%</span></div>
+      <div class="stat-label">Reporting Turnaround Reduction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10<span>+</span></div>
+      <div class="stat-label">Executive Dashboards Delivered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2M<span>+</span></div>
+      <div class="stat-label">Records Processed via ETL</div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-eyebrow">01 — About</span>
+    <h2 class="section-title">A little bio</h2>
+  </div>
+  <div class="bio-grid">
+    <div class="bio-text">
+      <p>
+        I'm <strong>Abhijeet Patil</strong>, a Senior Executive in Analytics at BrandScapes Worldwide in Mumbai. Over the past four years I've built dashboards, engineered ETL pipelines, and delivered data-driven recommendations for global FMCG and Healthcare clients — including Coca-Cola's North America Operating Unit.
+      </p>
+      <p>
+        My work sits at the intersection of <strong>analytics engineering and business intelligence</strong>: taking raw, messy data and sculpting it into systems that help stakeholders make better decisions faster. I'm particularly drawn to automation — removing friction from recurring reporting workflows and replacing it with real-time visibility.
+      </p>
+      <p>
+        I'm currently pursuing an <strong>M.Tech in Cloud Computing from BITS Pilani (WILP)</strong>, and actively building toward a Cloud Data Engineering role on AWS — combining my analytics depth with cloud-native data infrastructure skills.
+      </p>
+      <div class="bio-chips">
+        <span class="chip accent">Cloud Data Engineering</span>
+        <span class="chip">AWS</span>
+        <span class="chip">FMCG Analytics</span>
+        <span class="chip">Healthcare BI</span>
+        <span class="chip">Mumbai, India</span>
+        <span class="chip">Open to Opportunities</span>
+      </div>
+    </div>
+    <div class="bio-aside">
+      <div class="aside-card">
+        <div class="aside-card-label">Currently at</div>
+        <div class="aside-card-value">BrandScapes Worldwide
+          <small>Senior Executive Analytics · July 2022 – Present</small>
+        </div>
+      </div>
+      <div class="aside-card">
+        <div class="aside-card-label">Pursuing</div>
+        <div class="aside-card-value">M.Tech, Cloud Computing
+          <small>BITS Pilani, WILP — In Progress</small>
+        </div>
+      </div>
+      <div class="aside-card">
+        <div class="aside-card-label">Target role</div>
+        <div class="aside-card-value">Cloud / Analytics Data Engineer
+          <small>AWS · dbt · Kafka · Airflow</small>
+        </div>
+      </div>
+      <div class="aside-card">
+        <div class="aside-card-label">Domain depth</div>
+        <div class="aside-card-value">FMCG · Healthcare · Market Research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-eyebrow">02 — Experience</span>
+    <h2 class="section-title">Where I've worked</h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-company">BrandScapes Worldwide</div>
+        <div class="exp-period">Jul 2022 – Present</div>
+        <div class="exp-role">Senior Executive Analytics</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Analytics & BI lead across FMCG and Healthcare client portfolios, including Coca-Cola NAOU.</div>
+        <ul class="exp-bullets">
+          <li>Reduced reporting turnaround time by <strong>35%</strong> for global clients by designing and maintaining 10+ executive dashboards tracking brand health, market share, and consumer purchase-intent KPIs.</li>
+          <li>Increased data processing efficiency by <strong>50%</strong> across datasets ranging from 50K to 2M records by engineering automated Python-based ETL pipelines for validation, cleansing, and transformation.</li>
+          <li>Accelerated ad-hoc analysis delivery by <strong>40%</strong> by partnering with stakeholders to convert analytical requirements into reusable SQL frameworks and scalable reporting solutions.</li>
+          <li>Eliminated <strong>12+ hours of manual effort per week</strong> by automating recurring reporting workflows and enabling real-time performance monitoring for client engagements.</li>
+          <li>Maintained <strong>99% data accuracy</strong> across all client deliverables through robust QA controls, validation protocols, and governance standards.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">SQL</span>
+          <span class="exp-tag">Tableau</span>
+          <span class="exp-tag">Power BI</span>
+          <span class="exp-tag">Alteryx</span>
+          <span class="exp-tag">ETL Pipelines</span>
+          <span class="exp-tag">Coca-Cola NAOU</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-company">LeapForWord</div>
+        <div class="exp-period">Dec 2021 – Mar 2022</div>
+        <div class="exp-role">Data Analyst</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title">Operational analytics and reporting automation for a learning-tech startup.</div>
+        <ul class="exp-bullets">
+          <li>Reduced manual reporting effort by <strong>15 hours per week</strong> by developing Power BI dashboards monitoring 5+ operational KPIs across cross-functional business functions.</li>
+          <li>Improved data accuracy by <strong>50%</strong> and reduced manual cleansing effort by <strong>80%</strong> by automating validation and quality-control processes using Python.</li>
+          <li>Achieved <strong>98% reporting accuracy</strong> and maintained 100% on-time delivery throughout engagement.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Power BI</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Data Validation</span>
+          <span class="exp-tag">KPI Reporting</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-eyebrow">03 — Skills</span>
+    <h2 class="section-title">Tools of the trade</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title orange">Visualization & BI</div>
+      <div class="skill-items">
+        <div class="skill-item"><span class="skill-dot orange"></span>Tableau</div>
+        <div class="skill-item"><span class="skill-dot orange"></span>Power BI</div>
+        <div class="skill-item"><span class="skill-dot orange"></span>Looker Studio</div>
+        <div class="skill-item"><span class="skill-dot orange"></span>Advanced Excel</div>
+        <div class="skill-item"><span class="skill-dot orange"></span>Data Storytelling</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title teal">Data Engineering</div>
+      <div class="skill-items">
+        <div class="skill-item"><span class="skill-dot teal"></span>ETL Pipelines</div>
+        <div class="skill-item"><span class="skill-dot teal"></span>Kafka (Streaming)</div>
+        <div class="skill-item"><span class="skill-dot teal"></span>AWS (S3, Glue, Redshift)</div>
+        <div class="skill-item"><span class="skill-dot teal"></span>dbt (in progress)</div>
+        <div class="skill-item"><span class="skill-dot teal"></span>Alteryx</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title blue">Programming & Databases</div>
+      <div class="skill-items">
+        <div class="skill-item"><span class="skill-dot blue"></span>Python (Pandas, NumPy)</div>
+        <div class="skill-item"><span class="skill-dot blue"></span>SQL</div>
+        <div class="skill-item"><span class="skill-dot blue"></span>PostgreSQL</div>
+        <div class="skill-item"><span class="skill-dot blue"></span>MySQL</div>
+        <div class="skill-item"><span class="skill-dot blue"></span>Excel VBA / Macros</div>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title purple">Analytics & Domain</div>
+      <div class="skill-items">
+        <div class="skill-item"><span class="skill-dot purple"></span>Market Research (FMCG)</div>
+        <div class="skill-item"><span class="skill-dot purple"></span>Healthcare Analytics</div>
+        <div class="skill-item"><span class="skill-dot purple"></span>Brand Health KPIs</div>
+        <div class="skill-item"><span class="skill-dot purple"></span>Survey Data Analysis</div>
+        <div class="skill-item"><span class="skill-dot purple"></span>Forecasting & Modeling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-eyebrow">04 — Projects</span>
+    <h2 class="section-title">Selected work</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-number">01</div>
+      <div class="project-name">Real-Time Stock Market Data Pipeline</div>
+      <div class="project-desc">End-to-end streaming pipeline ingesting live market data via Kafka, processed on AWS (S3, Glue, Athena) and visualized for portfolio analytics. Built as a cloud data engineering portfolio piece.</div>
+      <div class="project-stack">
+        <span class="project-tag">Apache Kafka</span>
+        <span class="project-tag">AWS S3</span>
+        <span class="project-tag">AWS Glue</span>
+        <span class="project-tag">Athena</span>
+        <span class="project-tag">Python</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">02</div>
+      <div class="project-name">Alteryx Population Forecast → Excel VBA Replication</div>
+      <div class="project-desc">Reverse-engineered a production Alteryx forecasting workflow (SRG / Coca-Cola NAOU) into a fully validated Excel VBA macro — achieving an exact 48/48 row match across all output fields.</div>
+      <div class="project-stack">
+        <span class="project-tag">Alteryx</span>
+        <span class="project-tag">Excel VBA</span>
+        <span class="project-tag">Forecasting</span>
+        <span class="project-tag">Validation</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">03</div>
+      <div class="project-name">J&J Vision Cataract Equipment Dashboard</div>
+      <div class="project-desc">Tableau dashboard tracking Veritas phaco machine re-launch performance post Jan 2025, featuring complex LOD calculations, custom machine/pack classification, and executive-ready formatting.</div>
+      <div class="project-stack">
+        <span class="project-tag">Tableau</span>
+        <span class="project-tag">LOD Expressions</span>
+        <span class="project-tag">Healthcare</span>
+        <span class="project-tag">J&J Vision</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">04</div>
+      <div class="project-name">Electric Vehicle Data Analysis</div>
+      <div class="project-desc">Analyzed 150,000+ EV records to surface adoption trends, regional growth patterns, and market-share opportunities. Built an interactive Tableau dashboard enabling fast exploration of performance indicators.</div>
+      <div class="project-stack">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Tableau</span>
+        <span class="project-tag">SQL</span>
+        <span class="project-tag">Excel</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">05</div>
+      <div class="project-name">International ASP Pricing Analysis</div>
+      <div class="project-desc">Cross-market pricing intelligence for J&J Vision's Eyhance Toric II and Eyhance IOL lines across Brazil, USA, Japan, and India — built with advanced Excel array formulas and an interactive HTML distribution chart.</div>
+      <div class="project-stack">
+        <span class="project-tag">Excel</span>
+        <span class="project-tag">SUMPRODUCT</span>
+        <span class="project-tag">MINIFS/MAXIFS</span>
+        <span class="project-tag">HTML/JS</span>
+        <span class="project-tag">Healthcare</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-number">06</div>
+      <div class="project-name">Sales Performance Dashboard</div>
+      <div class="project-desc">Built a Looker Studio dashboard tracking $2K+ revenue across 69 transactions, increasing campaign visibility by 85% and reducing the reporting cycle for stakeholders.</div>
+      <div class="project-stack">
+        <span class="project-tag">Looker Studio</span>
+        <span class="project-tag">Google Sheets</span>
+        <span class="project-tag">Data Modeling</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-eyebrow">05 — Education</span>
+    <h2 class="section-title">Academic background</h2>
+  </div>
+  <div class="edu-list">
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">M.Tech, Cloud Computing</div>
+        <div class="edu-school">Birla Institute of Technology & Science (BITS Pilani), WILP</div>
+        <div class="edu-detail">Work Integrated Learning Programme · Mumbai</div>
+      </div>
+      <span class="edu-badge active">In Progress</span>
+    </div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">B.E., Electronics Engineering</div>
+        <div class="edu-school">Atharva College of Engineering, Malad, Mumbai</div>
+        <div class="edu-detail">2022 · CGPI: 8.3</div>
+      </div>
+      <span class="edu-badge done">Completed</span>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem;">
+    <div style="font-size:13px; font-weight:500; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem;">Certifications</div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-name">Tableau for Data Analysis</div>
+        <div class="cert-issuer">CloudyML</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Python for Data Science</div>
+        <div class="cert-issuer">Udemy</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">SQL for Data Analysis</div>
+        <div class="cert-issuer">Coursera</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Looker Essential Training</div>
+        <div class="cert-issuer">Google Cloud</div>
+      </div>
+      <div class="cert-card" style="border-color: rgba(31,166,118,0.3); background: rgba(31,166,118,0.05);">
+        <div class="cert-name" style="color:var(--teal)">AWS Certified Data Engineer</div>
+        <div class="cert-issuer">In Progress · AWS</div>
+      </div>
+      <div class="cert-card" style="border-color: rgba(31,166,118,0.3); background: rgba(31,166,118,0.05);">
+        <div class="cert-name" style="color:var(--teal)">dbt Fundamentals</div>
+        <div class="cert-issuer">In Progress · dbt Labs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="contact-headline">Let's build something<br><em style="font-family:var(--font-display); font-style:italic; color:var(--accent)">meaningful</em> together.</div>
+      <p class="contact-sub">
+        Open to Cloud Data Engineering, Analytics Engineering, and BI roles — especially those involving AWS, dbt, or streaming pipelines. Based in Mumbai, open to remote and hybrid.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:abhijeetpatil0922@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          abhijeetpatil0922@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/abhijeetpatil" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          linkedin.com/in/abhijeetpatil
+        </a>
+        <a href="https://github.com/abhijeetpatil" target="_blank" class="contact-link">
+          <span class="contact-link-icon">gh</span>
+          github.com/abhijeetpatil
+        </a>
+      </div>
+    </div>
+    <div class="contact-aside">
+      <div class="contact-aside-title">Quick facts</div>
+      <div class="contact-aside-item">
+        <span class="contact-aside-item-label">Location</span>
+        <span class="contact-aside-item-value">Mumbai, India</span>
+      </div>
+      <div class="contact-aside-item">
+        <span class="contact-aside-item-label">Phone</span>
+        <span class="contact-aside-item-value">+91 8554849629</span>
+      </div>
+      <div class="contact-aside-item">
+        <span class="contact-aside-item-label">Experience</span>
+        <span class="contact-aside-item-value">4+ years in Analytics & BI</span>
+      </div>
+      <div class="contact-aside-item">
+        <span class="contact-aside-item-label">Target</span>
+        <span class="contact-aside-item-value">Cloud / Analytics Data Engineering</span>
+      </div>
+      <div class="contact-aside-item">
+        <span class="contact-aside-item-label">Availability</span>
+        <span class="contact-aside-item-value">Open to opportunities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Abhijeet Patil</span>
+  <span class="footer-copy">© 2026 · Senior Data Analyst · Mumbai</span>
+</footer>
+
+</body>
+</html>
